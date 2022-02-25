@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>陈琪的3D相册</title>
+    <link rel="stylesheet" href="./css/base.css">
+</head>
+<body>
+    <div class="main pop-box"></div>
+    <div class="box">
+        <ul class="minbox">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <ol class="maxbox">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </div>
+<br> </br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp众里寻他千百度，蓦然回首，那人却在，灯火阑珊处。
+<P>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp——辛弃疾</p>
+<audio id="myaudio" src="./music/1.mp3" controls="controls" autoplay="autoplay" loop="loop" preload="auto"></audio>
+</body>
+<script>
+    
+    var music = document.getElementById("myaudio");//获取ID 
+    document.body.addEventListener('click',function() {
+        if (music.paused) {
+            music.paused=false;
+            music.play(); //没有就播放
+            music.style.display = 'none'
+        }else {
+            music.pause()
+            music.style.display = 'block'
+        }
+    }) 
+
+  function timeFun(imgs){	
+				var self = this	
+				var len = imgs.length
+			    this.popTimer = setInterval(function() {
+			       var left = Math.random() * window.innerWidth;
+			       var top =0;			       
+			       var index = Math.floor(Math.random() * len)
+			       var src = imgs[index]			       
+			       self.wind(left, top, src);
+			    }, 250);
+			}
+		function wind(left, top, src) {
+		        var img = document.createElement("img");
+		        img.className = "speed1"
+		        img.src = src;  
+		        img.style.width = Math.random()*(2.2-0.6)+0.6 + "rem";
+		        img.style.height =  "auto";
+		        img.style.left = left + "px";
+		        img.style.bottom = "100%";
+		        document.getElementsByClassName("pop-box")[0].appendChild(img);
+		        setTimeout(function() {
+		            document.getElementsByClassName("pop-box")[0].removeChild(img);
+		        }, 10000);
+            }
+            timeFun(['./img/21.png','./img/22.png'])
+</script>
+</html>
